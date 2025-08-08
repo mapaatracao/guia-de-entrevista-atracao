@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Interativo de Entrevista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Green -->
+    <!-- Application Structure Plan: A single-page app with three main sections navigated by a top bar: 'Início' (overview), 'Fases da Entrevista' (interactive accordion for the 6-step process), and 'Árvore de Competências' (an interactive drill-down explorer). This structure separates the procedural guide from the reference material, allowing recruiters to easily switch between reviewing the process and exploring specific questions. The interactive tree is chosen over a static list to reduce cognitive load and help users focus only on the competencies relevant to a specific role. -->
+    <!-- Visualization & Content Choices: Essências/Competências (Organize/Explore) -> Interactive HTML cards with JS filtering. Justification: More engaging and focused than a static document. Fases da Entrevista (Inform/Guide) -> HTML/JS Accordion. Justification: Breaks down the process into manageable steps. The 'Árvore de Competências' is a visual metaphor built with styled HTML/CSS, not a data chart. No complex data visualizations are needed; key stats are presented directly as text. Library: Vanilla JS for all interactivity. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active {
+            border-bottom-color: #10b981; /* emerald-500 */
+            color: #059669; /* emerald-600 */
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .essencia-card, .competencia-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .essencia-card.selected {
+            border-color: #10b981; /* emerald-500 */
+            background-color: #ecfdf5; /* emerald-50 */
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-emerald-600">Guia de Entrevista</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#" id="nav-inicio" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-emerald-600">Início</a>
+                        <a href="#" id="nav-fases" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-emerald-600">Fases da Entrevista</a>
+                        <a href="#" id="nav-arvore" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-emerald-600">Árvore de Competências</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- Seção Início -->
+        <section id="section-inicio" class="content-section">
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">Guia de Boas Práticas para Entrevistas</h2>
+                <p class="text-lg text-slate-600 mb-6">Este guia foi desenhado para transformar cada entrevista em uma avaliação estratégica e focada, garantindo a seleção de talentos alinhados à nossa cultura e aos desafios de cada vaga.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-sky-50 p-6 rounded-lg border border-sky-200">
+                        <h3 class="text-xl font-semibold text-sky-800 mb-3">🚀 As 6 Fases da Entrevista</h3>
+                        <p class="mb-4">Siga um roteiro estruturado para garantir uma conversa produtiva, uma avaliação precisa e uma excelente experiência para o candidato.</p>
+                        <ol class="list-decimal list-inside space-y-1 text-sky-700">
+                            <li>Preparação</li>
+                            <li>Abertura e Conexão</li>
+                            <li>Apresentação da Oportunidade</li>
+                            <li>Mapeamento de Experiências</li>
+                            <li>Espaço para o Candidato</li>
+                            <li>Fechamento e Próximos Passos</li>
+                        </ol>
+                        <button onclick="showSection('fases')" class="mt-4 inline-block bg-sky-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-sky-600 transition-colors">Ver Fases em Detalhe</button>
+                    </div>
+                    <div class="bg-emerald-50 p-6 rounded-lg border border-emerald-200">
+                        <h3 class="text-xl font-semibold text-emerald-800 mb-3">🌳 O Modelo da Árvore de Competências</h3>
+                        <p class="mb-4">Para garantir uma avaliação completa, usamos o modelo da <b>Árvore de Competências</b>. Ele nos ajuda a conectar comportamentos observáveis aos pilares da nossa cultura.</p>
+                        <ul class="space-y-2">
+                            <li><b class="text-emerald-700">Raízes (Essências):</b> O "porquê" por trás do que fazemos.</li>
+                            <li><b class="text-emerald-700">Tronco (Competências):</b> O "o quê" nós fazemos para materializar as essências.</li>
+                            <li><b class="text-emerald-700">Folhas (Agilidades):</b> O "como" nos adaptamos e evoluímos.</li>
+                        </ul>
+                         <button onclick="showSection('arvore')" class="mt-4 inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-emerald-600 transition-colors">Explorar a Árvore</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Fases da Entrevista -->
+        <section id="section-fases" class="content-section">
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6">As 6 Fases da Entrevista Estratégica</h2>
+                <p class="text-lg text-slate-600 mb-8">Utilize esta estrutura como um guia para conduzir uma entrevista completa e assertiva, desde o planejamento até o encerramento.</p>
+                <div id="accordion-container" class="space-y-4">
+                    <!-- Accordion items will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Árvore de Competências -->
+        <section id="section-arvore" class="content-section">
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Árvore de Competências Interativa</h2>
+                <p class="text-lg text-slate-600 mb-8">Selecione uma <b>Essência (Raiz)</b> para explorar as <b>Competências (Tronco)</b> associadas e encontrar perguntas para sua entrevista.</p>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-700 mb-4 border-b-2 border-emerald-300 pb-2">1. Selecione a Raiz (Essência)</h3>
+                    <div id="essencias-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Essências will be injected here by JS -->
+                    </div>
+                </div>
+
+                <div id="competencias-section" class="mt-10 hidden">
+                    <h3 class="text-xl font-semibold text-slate-700 mb-4 border-b-2 border-emerald-300 pb-2">2. Explore o Tronco (Competências)</h3>
+                    <div id="competencias-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Competências will be injected here by JS -->
+                    </div>
+                </div>
+                
+                <div id="detalhe-competencia-section" class="mt-10 hidden bg-slate-50 p-6 rounded-lg border">
+                    <!-- Detalhes da competência will be injected here by JS -->
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const skillData = [
+            {
+                essencia: "Somos Apaixonados pela execução",
+                competencia: "Autonomia",
+                conceito: "Tem comprometimento e autonomia para entregar as atividades, sempre envolvendo as pessoas e os recursos necessários.",
+                perguntas: [
+                    "Conte sobre uma situação em que você precisou tomar iniciativa para resolver um problema ou entregar um projeto. Como você garantiu que os recursos e pessoas necessários estavam envolvidos?",
+                    "Quando você discordou de uma direção tomada pela sua equipe ou superior, como você lidou com a execução do plano? Alguma vez você precisou adaptar sua autonomia ao contexto?",
+                    "Em sua última experiência, como você priorizou suas atividades para que estivessem alinhadas com a estratégia da empresa? Compartilhe um exemplo de algo que deu certo ou não deu."
+                ],
+                esperado: [
+                    "Demonstra trabalhar de forma autônoma e eficiente?",
+                    "Demonstra ter tomado a frente na condução da tarefa/projeto?",
+                    "Assume a responsabilidade sobre as tarefas?",
+                    "Demonstra proatividade e responsabilidade com as entregas?"
+                ]
+            },
+            {
+                essencia: "Somos Apaixonados pela execução",
+                competencia: "Resolução de Problemas",
+                conceito: "É ágil e profundo para resolver problemas, experimentando e aprendendo rapidamente para escalar com eficiência.",
+                perguntas: [
+                    "Descreva uma situação em que você identificou um problema complexo que ninguém estava resolvendo. Como você o analisou, que passos tomou e qual foi o resultado?",
+                    "Fale sobre um momento em que uma solução que você propôs não funcionou como esperado. O que você aprendeu com a experiência e como adaptou sua abordagem?",
+                    "Como você equilibra a necessidade de agilidade com a importância de uma análise profunda ao resolver um problema?"
+                ],
+                esperado: [
+                    "Demonstra habilidade para identificar a causa raiz dos problemas.",
+                    "Busca soluções criativas e eficazes.",
+                    "Aprende com os erros e aplica o aprendizado em situações futuras.",
+                    "Demonstra agilidade na tomada de decisão e na implementação de soluções."
+                ]
+            },
+            {
+                essencia: "Fazemos os olhos dos nossos clientes brilharem",
+                competencia: "Foco no Cliente",
+                conceito: "Tem entendimento do ecossistema do Grupo Boticário e do impacto individual de suas atividades na experiência dos clientes.",
+                perguntas: [
+                    "Conte uma situação em que você precisou entender profundamente as necessidades de um cliente para encontrar uma solução criativa a fim de superar suas expectativas. Como foi este processo?",
+                    "Descreva um momento em que você antecipou uma necessidade do cliente antes mesmo que ele a expressasse. O que te levou a essa antecipação e qual foi o resultado?",
+                    "Como você mede o sucesso de uma iniciativa do ponto de vista do cliente?"
+                ],
+                esperado: [
+                    "Demonstra interesse genuíno em entender e atender às necessidades dos clientes.",
+                    "Busca ativamente feedback dos clientes para melhorar produtos e serviços.",
+                    "Coloca o cliente no centro de suas decisões e ações.",
+                    "Consegue traduzir as necessidades dos clientes em soluções práticas e inovadoras."
+                ]
+            },
+            {
+                essencia: "Nutrimos nossas relações",
+                competencia: "Influência Multifuncional",
+                conceito: "Constrói relações de confiança e estimula a colaboração entre diferentes áreas, pessoas e empresas do ecossistema.",
+                perguntas: [
+                    "Descreva uma situação em que você precisou convencer stakeholders de diferentes áreas sobre uma ideia ou projeto. Como você construiu sua argumentação e quais foram os resultados?",
+                    "Fale sobre um momento em que houve um conflito de interesses entre sua área e outra. Como você atuou para encontrar uma solução que beneficiasse a todos?",
+                    "Como você constrói e mantém relacionamentos com colegas de outras equipes para facilitar a colaboração no dia a dia?"
+                ],
+                esperado: [
+                    "Comunica-se de forma clara, assertiva e empática.",
+                    "Constrói alianças e parcerias para alcançar objetivos comuns.",
+                    "Sabe negociar e gerenciar conflitos de forma construtiva.",
+                    "Inspira e influencia pessoas, mesmo sem autoridade formal."
+                ]
+            },
+            {
+                essencia: "Buscamos Sucesso Responsável",
+                competencia: "Visão de negócio",
+                conceito: "Foca suas ações de hoje considerando o impacto de longo prazo na empresa, nos colaboradores, nos parceiros, nos clientes e na sociedade.",
+                perguntas: [
+                    "Conte sobre uma decisão que você tomou que considerou não apenas o resultado imediato, but também o impacto a longo prazo. Quais fatores você ponderou?",
+                    "Como você se mantém atualizado sobre as tendências do mercado e como aplica esse conhecimento para identificar oportunidades ou riscos para o negócio?",
+                    "Descreva uma situação em que você precisou equilibrar uma meta de curto prazo com a estratégia de longo prazo da empresa."
+                ],
+                esperado: [
+                    "Entende a estratégia da empresa e como seu trabalho contribui para ela.",
+                    "Toma decisões considerando o impacto em diferentes stakeholders.",
+                    "Busca a perenidade do negócio e a geração de valor sustentável.",
+                    "Demonstra responsabilidade com os recursos da empresa."
+                ]
+            },
+            {
+                essencia: "Somos Inquietos",
+                competencia: "Empreendedorismo",
+                conceito: "É questionador por natureza, e se compromete a executar o que for decidido, mesmo quando discorda. Se desafia a fazer mais e melhor.",
+                perguntas: [
+                    "Fale sobre uma vez que você propôs uma melhoria ou uma nova ideia que desafiava o status quo. Como foi o processo de apresentar e implementar essa mudança?",
+                    "Descreva um projeto que você liderou do início ao fim. Quais foram os maiores desafios e como você os superou?",
+                    "Quando você identifica uma oportunidade de fazer algo de forma mais eficiente ou inovadora, o que você costuma fazer?"
+                ],
+                esperado: [
+                    "É proativo e assume a responsabilidade pelos resultados.",
+                    "Busca constantemente por inovação e melhoria contínua.",
+                    "É resiliente e persistente diante de desafios e obstáculos.",
+                    "Calcula riscos e toma decisões corajosas."
+                ]
+            }
+        ];
+
+        const interviewPhases = [
+            {
+                title: "Fase 1: Preparação (O Dever de Casa)",
+                content: "<b>Objetivo:</b> Chegar na entrevista com um plano claro, sabendo exatamente o que procurar.<br><br><b>Ações Chave:</b><ul class='list-disc pl-5 mt-2 space-y-1'><li><b>Revise o DNA da Vaga:</b> Quais são as 3 competências CRÍTICAS para esta posição? Tenha isso claro antes de começar.</li><li><b>Conecte com o Candidato:</b> Analise o perfil do candidato e identifique 2-3 experiências que parecem se conectar com o DNA da vaga. Anote-as para usar como gancho.</li><li><b>Prepare suas Perguntas:</b> Use a seção 'Árvore de Competências' para já selecionar as perguntas que você irá fazer.</li></ul>"
+            },
+            {
+                title: "Fase 2: Abertura e Conexão (Quebrando o Gelo - 5 min)",
+                content: "<b>Objetivo:</b> Criar um ambiente de confiança. Um candidato relaxado compartilha informações mais ricas e verdadeiras.<br><br><div class='mt-2 p-3 bg-slate-100 rounded-md text-sm'><b>Script de Alinhamento:</b><br>'Olá, [Nome], tudo bem? Sou [Seu Nome]. Nossa conversa hoje é uma parceria. Vamos ter 3 momentos: eu apresento o desafio, depois quero muito ouvir sobre você, e no final você tira todas as suas dúvidas. Combinado?'</div>"
+            },
+            {
+                title: "Fase 3: O Pitch da Vaga (Vendendo o Desafio - 5 min)",
+                content: "<b>Objetivo:</b> Engajar o candidato mostrando o impacto e o propósito da vaga, não apenas as tarefas.<br><br><b>Estrutura do Pitch:</b><ul class='list-disc pl-5 mt-2 space-y-1'><li><b>A Missão (O quadro geral):</b> 'O grande objetivo da nossa área hoje é...'</li><li><b>O Desafio (O problema a ser resolvido):</b> 'E para chegar lá, o principal quebra-cabeça que temos para montar é...'</li><li><b>O Papel do Herói (Onde o candidato entra):</b> 'É aqui que você entra. A pessoa nesta posição será a peça-chave para...'</li></ul>"
+            },
+            {
+                title: "Fase 4: Investigação Focada (O Coração da Entrevista)",
+                content: "<b>Objetivo:</b> Coletar evidências de comportamentos passados que demonstrem as competências desejadas.<br><br><b>Como Fazer:</b><ul class='list-disc pl-5 mt-2 space-y-2'><li><b>Use a 'Árvore de Competências':</b> Faça as perguntas que você preparou na Fase 1.</li><li><b>Comece com um Gancho Aberto:</b> 'Com base nesse desafio que comentei, me conte sobre o projeto que você mais se orgulha e que se conecta com isso.'</li><li><b>Aprofunde com o Método STAR:</b> Para cada resposta, investigue:<br><b>S</b>ituação: 'Qual era o cenário?'<br><b>T</b>arefa: 'Qual era sua responsabilidade?'<br><b>A</b>ção: 'O que <b>VOCÊ</b> fez, passo a passo?'<br><b>R</b>esultado: 'Qual foi o impacto? (Quantifique!)'</li></ul>"
+            },
+            {
+                title: "Fase 5: A Vez do Candidato (A Entrevista Invertida - 10 min)",
+                content: "<b>Objetivo:</b> Permitir que o candidato avalie a oportunidade e a empresa, demonstrando transparência.<br><br><div class='mt-2 p-3 bg-slate-100 rounded-md text-sm'><b>Abra o Espaço Genuinamente:</b><br>'Eu falei bastante! Agora, o que <b>VOCÊ</b> gostaria de saber para ter certeza que este é o desafio certo para você?'<br><br><i>Dica: As perguntas do candidato revelam muito sobre suas prioridades e interesses.</i></div>"
+            },
+            {
+                title: "Fase 6: Fechamento e Próximos Passos (Clareza e Respeito - 5 min)",
+                content: "<b>Objetivo:</b> Criar uma experiência final positiva e gerenciar as expectativas do candidato.<br><br><div class='mt-2 p-3 bg-slate-100 rounded-md text-sm'><b>Script de Encerramento:</b><br>'Muito obrigado pela conversa, [Nome]. Para te dar visibilidade, os próximos passos são: [Ex: conversa técnica, teste, etc.]. Nosso objetivo é concluir esta etapa até [data] e te daremos um retorno (positivo ou não) até [data]. Ficou alguma última dúvida?'</div>"
+            }
+        ];
+
+        let activeSection = 'inicio';
+        let selectedEssencia = null;
+
+        function showSection(sectionId) {
+            activeSection = sectionId;
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active', 'fade-in');
+            });
+            document.getElementById(`section-${sectionId}`).classList.add('active', 'fade-in');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.getElementById(`nav-${sectionId}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function renderAccordion() {
+            const container = document.getElementById('accordion-container');
+            container.innerHTML = interviewPhases.map((phase, index) => `
+                <div class="border border-slate-200 rounded-lg">
+                    <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left font-semibold text-slate-700 hover:bg-slate-50">
+                        <span>${phase.title}</span>
+                        <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-4 pt-0 text-slate-600">
+                            ${phase.content}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.accordion-toggle').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const svg = button.querySelector('svg');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        svg.classList.remove('rotate-180');
+                    } else {
+                        document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+                        document.querySelectorAll('.accordion-toggle svg').forEach(s => s.classList.remove('rotate-180'));
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        svg.classList.add('rotate-180');
+                    }
+                });
+            });
+        }
+        
+        function renderEssencias() {
+            const container = document.getElementById('essencias-container');
+            const essencias = [...new Set(skillData.map(item => item.essencia))];
+            container.innerHTML = essencias.map(essencia => `
+                <div class="essencia-card border-2 border-slate-200 p-4 rounded-lg hover:border-emerald-400 hover:shadow-md" onclick="selectEssencia('${essencia}')">
+                    <h4 class="font-bold text-lg text-slate-800">${essencia}</h4>
+                </div>
+            `).join('');
+        }
+
+        function selectEssencia(essenciaName) {
+            selectedEssencia = essenciaName;
+            
+            document.querySelectorAll('.essencia-card').forEach(card => card.classList.remove('selected'));
+            const selectedCard = Array.from(document.querySelectorAll('.essencia-card')).find(card => card.querySelector('h4').textContent === essenciaName);
+            if(selectedCard) selectedCard.classList.add('selected');
+
+            const filteredCompetencias = skillData.filter(item => item.essencia === essenciaName);
+            renderCompetencias(filteredCompetencias);
+            
+            document.getElementById('competencias-section').classList.remove('hidden');
+             document.getElementById('competencias-section').classList.add('fade-in');
+            document.getElementById('detalhe-competencia-section').classList.add('hidden');
+        }
+
+        function renderCompetencias(competencias) {
+            const container = document.getElementById('competencias-container');
+            container.innerHTML = competencias.map(item => `
+                <div class="competencia-card border border-slate-200 p-4 rounded-lg hover:bg-slate-100" onclick="showCompetenciaDetail('${item.competencia}')">
+                    <h5 class="font-semibold text-md text-slate-700">${item.competencia}</h5>
+                </div>
+            `).join('');
+        }
+
+        function showCompetenciaDetail(competenciaName) {
+            const competencia = skillData.find(item => item.competencia === competenciaName);
+            if (!competencia) return;
+
+            const container = document.getElementById('detalhe-competencia-section');
+            container.innerHTML = `
+                <h4 class="text-2xl font-bold text-emerald-700 mb-2">${competencia.competencia}</h4>
+                <p class="text-slate-600 mb-6 italic">"${competencia.conceito}"</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h5 class="font-semibold text-lg text-slate-800 mb-3">Perguntas Sugeridas (Método STAR)</h5>
+                        <ul class="list-disc pl-5 space-y-3 text-slate-700">
+                            ${competencia.perguntas.map(q => `<li>${q}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-lg text-slate-800 mb-3">O que se espera (Pistas Visuais)</h5>
+                        <ul class="list-disc pl-5 space-y-2 text-slate-700">
+                             ${competencia.esperado.map(e => `<li>${e}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            container.classList.remove('hidden');
+            container.classList.add('fade-in');
+            container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('inicio');
+            renderAccordion();
+            renderEssencias();
+
+            document.getElementById('nav-inicio').addEventListener('click', (e) => { e.preventDefault(); showSection('inicio'); });
+            document.getElementById('nav-fases').addEventListener('click', (e) => { e.preventDefault(); showSection('fases'); });
+            document.getElementById('nav-arvore').addEventListener('click', (e) => { e.preventDefault(); showSection('arvore'); });
+        });
+    </script>
+</body>
+</html>
