@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
     <!-- Chosen Palette: Calm Green -->
     <!-- Application Structure Plan: A single-page app with three main sections navigated by a top bar: 'Início' (overview), 'Fases da Entrevista' (interactive accordion for the 6-step process), and 'Árvore de Competências' (an interactive drill-down explorer). This structure separates the procedural guide from the reference material, allowing recruiters to easily switch between reviewing the process and exploring specific questions. The interactive tree is chosen over a static list to reduce cognitive load and help users focus only on the competencies relevant to a specific role. -->
     <!-- Visualization & Content Choices: Essências/Competências (Organize/Explore) -> Interactive HTML cards with JS filtering. Justification: More engaging and focused than a static document. Fases da Entrevista (Inform/Guide) -> HTML/JS Accordion. Justification: Breaks down the process into manageable steps. The 'Árvore de Competências' is a visual metaphor built with styled HTML/CSS, not a data chart. No complex data visualizations are needed; key stats are presented directly as text. Library: Vanilla JS for all interactivity. -->
@@ -71,7 +72,12 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
-                    <h1 class="text-xl font-bold text-emerald-600">Guia de Entrevista</h1>
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <h1 class="text-xl font-bold text-emerald-600">Guia de Entrevista</h1>
+                    </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
