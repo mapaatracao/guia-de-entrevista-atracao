@@ -53,6 +53,16 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="%236b7280" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/></svg>');
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
     </style>
 </head>
 <body class="text-slate-700">
@@ -154,22 +164,6 @@
         const skillData = [
             {
                 essencia: "Somos Apaixonados pela execução",
-                competencia: "Autonomia",
-                conceito: "Tem comprometimento e autonomia para entregar as atividades, sempre envolvendo as pessoas e os recursos necessários.",
-                perguntas: [
-                    "Conte sobre uma situação em que você precisou tomar iniciativa para resolver um problema ou entregar um projeto. Como você garantiu que os recursos e pessoas necessários estavam envolvidos?",
-                    "Quando você discordou de uma direção tomada pela sua equipe ou superior, como você lidou com a execução do plano? Alguma vez você precisou adaptar sua autonomia ao contexto?",
-                    "Em sua última experiência, como você priorizou suas atividades para que estivessem alinhadas com a estratégia da empresa? Compartilhe um exemplo de algo que deu certo ou não deu."
-                ],
-                esperado: [
-                    "Demonstra trabalhar de forma autônoma e eficiente?",
-                    "Demonstra ter tomado a frente na condução da tarefa/projeto?",
-                    "Assume a responsabilidade sobre as tarefas?",
-                    "Demonstra proatividade e responsabilidade com as entregas?"
-                ]
-            },
-            {
-                essencia: "Somos Apaixonados pela execução",
                 competencia: "Resolução de Problemas",
                 conceito: "É ágil e profundo para resolver problemas, experimentando e aprendendo rapidamente para escalar com eficiência.",
                 perguntas: [
@@ -177,76 +171,86 @@
                     "Fale sobre um momento em que uma solução que você propôs não funcionou como esperado. O que você aprendeu com a experiência e como adaptou sua abordagem?",
                     "Como você equilibra a necessidade de agilidade com a importância de uma análise profunda ao resolver um problema?"
                 ],
-                esperado: [
-                    "Demonstra habilidade para identificar a causa raiz dos problemas.",
-                    "Busca soluções criativas e eficazes.",
-                    "Aprende com os erros e aplica o aprendizado em situações futuras.",
-                    "Demonstra agilidade na tomada de decisão e na implementação de soluções."
-                ]
-            },
-            {
-                essencia: "Fazemos os olhos dos nossos clientes brilharem",
-                competencia: "Foco no Cliente",
-                conceito: "Tem entendimento do ecossistema do Grupo Boticário e do impacto individual de suas atividades na experiência dos clientes.",
-                perguntas: [
-                    "Conte uma situação em que você precisou entender profundamente as necessidades de um cliente para encontrar uma solução criativa a fim de superar suas expectativas. Como foi este processo?",
-                    "Descreva um momento em que você antecipou uma necessidade do cliente antes mesmo que ele a expressasse. O que te levou a essa antecipação e qual foi o resultado?",
-                    "Como você mede o sucesso de uma iniciativa do ponto de vista do cliente?"
-                ],
-                esperado: [
-                    "Demonstra interesse genuíno em entender e atender às necessidades dos clientes.",
-                    "Busca ativamente feedback dos clientes para melhorar produtos e serviços.",
-                    "Coloca o cliente no centro de suas decisões e ações.",
-                    "Consegue traduzir as necessidades dos clientes em soluções práticas e inovadoras."
-                ]
-            },
-            {
-                essencia: "Nutrimos nossas relações",
-                competencia: "Influência Multifuncional",
-                conceito: "Constrói relações de confiança e estimula a colaboração entre diferentes áreas, pessoas e empresas do ecossistema.",
-                perguntas: [
-                    "Descreva uma situação em que você precisou convencer stakeholders de diferentes áreas sobre uma ideia ou projeto. Como você construiu sua argumentação e quais foram os resultados?",
-                    "Fale sobre um momento em que houve um conflito de interesses entre sua área e outra. Como você atuou para encontrar uma solução que beneficiasse a todos?",
-                    "Como você constrói e mantém relacionamentos com colegas de outras equipes para facilitar a colaboração no dia a dia?"
-                ],
-                esperado: [
-                    "Comunica-se de forma clara, assertiva e empática.",
-                    "Constrói alianças e parcerias para alcançar objetivos comuns.",
-                    "Sabe negociar e gerenciar conflitos de forma construtiva.",
-                    "Inspira e influencia pessoas, mesmo sem autoridade formal."
-                ]
-            },
-            {
-                essencia: "Buscamos Sucesso Responsável",
-                competencia: "Visão de negócio",
-                conceito: "Foca suas ações de hoje considerando o impacto de longo prazo na empresa, nos colaboradores, nos parceiros, nos clientes e na sociedade.",
-                perguntas: [
-                    "Conte sobre uma decisão que você tomou que considerou não apenas o resultado imediato, but também o impacto a longo prazo. Quais fatores você ponderou?",
-                    "Como você se mantém atualizado sobre as tendências do mercado e como aplica esse conhecimento para identificar oportunidades ou riscos para o negócio?",
-                    "Descreva uma situação em que você precisou equilibrar uma meta de curto prazo com a estratégia de longo prazo da empresa."
-                ],
-                esperado: [
-                    "Entende a estratégia da empresa e como seu trabalho contribui para ela.",
-                    "Toma decisões considerando o impacto em diferentes stakeholders.",
-                    "Busca a perenidade do negócio e a geração de valor sustentável.",
-                    "Demonstra responsabilidade com os recursos da empresa."
-                ]
+                agilidade: {
+                    nome: "Resultados",
+                    conceito: "Tem senso de dono e assume a responsabilidade pelos resultados, mesmo em cenários adversos.",
+                    perguntas: [
+                        "Qual foi o resultado mais impactante que você gerou nos últimos tempos?",
+                        "Fale sobre uma situação em que você teve que assumir a responsabilidade por um resultado negativo. Como você lidou com isso?"
+                    ]
+                },
+                esperado: {
+                    "Analista I / Dev I": [
+                        "Demonstra habilidade para identificar problemas simples e seguir procedimentos para resolvê-los.",
+                        "Busca ajuda quando encontra dificuldades e aprende com a orientação recebida.",
+                        "Aplica soluções conhecidas para problemas rotineiros."
+                    ],
+                    "Analista II / Dev II": [
+                        "Analisa problemas de complexidade moderada, identificando diferentes facetas.",
+                        "Propõe e experimenta soluções, avaliando os resultados.",
+                        "Colabora com outros para resolver problemas que afetam a equipe."
+                    ],
+                    "Analista III / Dev III": [
+                        "Aborda problemas complexos de forma estruturada, identificando a causa raiz.",
+                        "Desenvolve e implementa soluções criativas e eficazes, aprendendo rapidamente com os resultados.",
+                        "Demonstra agilidade para ajustar a rota quando uma solução não funciona."
+                    ],
+                    "Especialista I / Developer Specialist I": [
+                        "Antecipa problemas potenciais e atua de forma proativa para mitigá-los.",
+                        "Lidera a resolução de problemas complexos que impactam múltiplos projetos ou áreas.",
+                        "Utiliza dados e análises para fundamentar suas soluções e escalar o aprendizado."
+                    ],
+                     "Especialista II / Developer Specialist II": [
+                        "Resolve problemas sistêmicos e altamente complexos, com impacto estratégico para a organização.",
+                        "Inova na forma de resolver problemas, criando novas metodologias e frameworks.",
+                        "Dissemina o conhecimento sobre resolução de problemas, mentorando outros profissionais."
+                    ]
+                }
             },
             {
                 essencia: "Somos Inquietos",
-                competencia: "Empreendedorismo",
-                conceito: "É questionador por natureza, e se compromete a executar o que for decidido, mesmo quando discorda. Se desafia a fazer mais e melhor.",
+                competencia: "Autodesenvolvimento",
+                conceito: "Busca aprendizado contínuo e pede feedbacks, demonstrando humildade para se desenvolver.",
                 perguntas: [
-                    "Fale sobre uma vez que você propôs uma melhoria ou uma nova ideia que desafiava o status quo. Como foi o processo de apresentar e implementar essa mudança?",
-                    "Descreva um projeto que você liderou do início ao fim. Quais foram os maiores desafios e como você os superou?",
-                    "Quando você identifica uma oportunidade de fazer algo de forma mais eficiente ou inovadora, o que você costuma fazer?"
+                    "Compartilhe um exemplo de uma habilidade ou conhecimento que você desenvolveu recentemente por iniciativa própria e como isso impactou seu trabalho.",
+                    "Que tipo de desafios profissionais te motivam a aprender? Como você busca esses desafios?",
+                    "Fale sobre um feedback que recebeu e que foi um ponto de virada no seu desenvolvimento."
                 ],
-                esperado: [
-                    "É proativo e assume a responsabilidade pelos resultados.",
-                    "Busca constantemente por inovação e melhoria contínua.",
-                    "É resiliente e persistente diante de desafios e obstáculos.",
-                    "Calcula riscos e toma decisões corajosas."
-                ]
+                agilidade: {
+                    nome: "Autoconhecimento",
+                    conceito: "Evolui conhecendo suas qualidades e reconhecendo suas oportunidades.",
+                    perguntas: [
+                        "Fale sobre uma oportunidade de desenvolvimento em que você evoluiu.",
+                        "Como fez para melhorar em algum aspecto comportamental relevante para seu desempenho?"
+                    ]
+                },
+                esperado: {
+                     "Analista I / Dev I": [
+                        "Mostra curiosidade e disposição para aprender tarefas novas.",
+                        "Ouve atentamente os feedbacks e tenta aplicá-los.",
+                        "Busca ajuda para se desenvolver em pontos específicos."
+                    ],
+                    "Analista II / Dev II": [
+                        "Busca ativamente por conhecimento para melhorar seu desempenho na função.",
+                        "Solicita feedbacks de forma proativa para identificar pontos de melhoria.",
+                        "Aplica os aprendizados e feedbacks em suas atividades diárias."
+                    ],
+                    "Analista III / Dev III": [
+                        "Tem um plano de desenvolvimento pessoal e busca recursos para executá-lo.",
+                        "Demonstra humildade para reconhecer suas vulnerabilidades e trabalhar nelas.",
+                        "Utiliza os feedbacks para fazer mudanças comportamentais observáveis."
+                    ],
+                    "Especialista I / Developer Specialist I": [
+                        "É referência em aprendizado contínuo, explorando novas áreas de conhecimento.",
+                        "Busca feedbacks de diversas fontes e os utiliza para se reinventar profissionalmente.",
+                        "Mentora outros profissionais em seu desenvolvimento."
+                    ],
+                     "Especialista II / Developer Specialist II": [
+                        "Cria e dissemina uma cultura de autodesenvolvimento e feedback na equipe e organização.",
+                        "Está constantemente se desafiando e saindo da sua zona de conforto.",
+                        "Inspira os outros com sua jornada de aprendizado e evolução."
+                    ]
+                }
             }
         ];
 
@@ -279,6 +283,7 @@
 
         let activeSection = 'inicio';
         let selectedEssencia = null;
+        let currentCompetencia = null;
 
         function showSection(sectionId) {
             activeSection = sectionId;
@@ -362,32 +367,69 @@
         }
 
         function showCompetenciaDetail(competenciaName) {
-            const competencia = skillData.find(item => item.competencia === competenciaName);
-            if (!competencia) return;
+            currentCompetencia = skillData.find(item => item.competencia === competenciaName);
+            if (!currentCompetencia) return;
 
             const container = document.getElementById('detalhe-competencia-section');
+            
+            const cargos = Object.keys(currentCompetencia.esperado);
+
             container.innerHTML = `
-                <h4 class="text-2xl font-bold text-emerald-700 mb-2">${competencia.competencia}</h4>
-                <p class="text-slate-600 mb-6 italic">"${competencia.conceito}"</p>
+                <h4 class="text-2xl font-bold text-emerald-700 mb-2">${currentCompetencia.competencia}</h4>
+                <p class="text-slate-600 mb-6 italic">"${currentCompetencia.conceito}"</p>
                 
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid md:grid-cols-2 gap-8">
                     <div>
-                        <h5 class="font-semibold text-lg text-slate-800 mb-3">Perguntas Sugeridas (Método STAR)</h5>
+                        <h5 class="font-semibold text-lg text-slate-800 mb-3">Perguntas Sugeridas (Competência)</h5>
                         <ul class="list-disc pl-5 space-y-3 text-slate-700">
-                            ${competencia.perguntas.map(q => `<li>${q}</li>`).join('')}
+                            ${currentCompetencia.perguntas.map(q => `<li>${q}</li>`).join('')}
                         </ul>
                     </div>
-                    <div>
-                        <h5 class="font-semibold text-lg text-slate-800 mb-3">O que se espera (Pistas Visuais)</h5>
-                        <ul class="list-disc pl-5 space-y-2 text-slate-700">
-                             ${competencia.esperado.map(e => `<li>${e}</li>`).join('')}
+                    ${currentCompetencia.agilidade ? `
+                    <div class="bg-emerald-50 p-4 rounded-lg">
+                        <h5 class="font-semibold text-lg text-emerald-800 mb-3">Visão de Agilidade: ${currentCompetencia.agilidade.nome}</h5>
+                         <p class="text-emerald-700 mb-4 text-sm italic">"${currentCompetencia.agilidade.conceito}"</p>
+                        <ul class="list-disc pl-5 space-y-3 text-sm text-emerald-700">
+                            ${currentCompetencia.agilidade.perguntas.map(q => `<li>${q}</li>`).join('')}
                         </ul>
+                    </div>
+                    ` : '<div></div>'}
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h5 class="font-semibold text-lg text-slate-800">O que se espera (Pistas Visuais)</h5>
+                        <select id="cargo-selector" class="border border-slate-300 rounded-md p-2 bg-white">
+                            ${cargos.map(cargo => `<option value="${cargo}">${cargo}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div id="pistas-visuais-container">
+                        <!-- Pistas visuais will be injected here -->
                     </div>
                 </div>
             `;
+            
+            renderPistasVisuais(cargos[0]);
+
+            const selector = document.getElementById('cargo-selector');
+            selector.addEventListener('change', (e) => {
+                renderPistasVisuais(e.target.value);
+            });
+
             container.classList.remove('hidden');
             container.classList.add('fade-in');
             container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function renderPistasVisuais(cargo) {
+            if (!currentCompetencia) return;
+            const pistasContainer = document.getElementById('pistas-visuais-container');
+            const pistas = currentCompetencia.esperado[cargo];
+            pistasContainer.innerHTML = `
+                <ul class="list-disc pl-5 space-y-2 text-slate-700 bg-white p-4 rounded-md border">
+                    ${pistas.map(p => `<li>${p}</li>`).join('')}
+                </ul>
+            `;
         }
 
 
