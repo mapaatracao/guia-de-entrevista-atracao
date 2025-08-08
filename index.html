@@ -162,6 +162,25 @@
 
     <script>
         const skillData = [
+            // Essência: Somos Apaixonados pela execução
+            {
+                essencia: "Somos Apaixonados pela execução",
+                competencia: "Autonomia",
+                conceito: "Tem comprometimento e autonomia para entregar as atividades, sempre envolvendo as pessoas e os recursos necessários.",
+                perguntas: [
+                    "Conte sobre uma situação em que você precisou tomar iniciativa para resolver um problema ou entregar um projeto. Como você garantiu que os recursos e pessoas necessários estavam envolvidos?",
+                    "Quando você discordou de uma direção tomada pela sua equipe ou superior, como você lidou com a execução do plano? Alguma vez você precisou adaptar sua autonomia ao contexto?",
+                    "Em sua última experiência, como você priorizou suas atividades para que estivessem alinhadas com a estratégia da empresa? Compartilhe um exemplo de algo que deu certo ou não deu."
+                ],
+                agilidade: null,
+                esperado: {
+                    "Analista I / Dev I": ["Demonstra capacidade de realizar tarefas com supervisão, mas busca ativamente por orientação para garantir a qualidade.", "Assume responsabilidade por suas entregas, comunicando progressos e dificuldades.", "Organiza suas tarefas diárias para cumprir prazos estabelecidos."],
+                    "Analista II / Dev II": ["Trabalha com autonomia em tarefas de média complexidade, buscando alinhamento quando necessário.", "Toma a iniciativa para resolver problemas que surgem em seu escopo de trabalho.", "Gerencia suas prioridades de forma eficaz, alinhando-as com os objetivos da equipe."],
+                    "Analista III / Dev III": ["Demonstra total autonomia na execução de suas responsabilidades, envolvendo stakeholders de forma proativa.", "Propõe melhorias e assume a liderança em projetos dentro de sua área.", "Prioriza suas atividades com base na estratégia da empresa, influenciando positivamente os resultados."],
+                    "Especialista I / Developer Specialist I": ["Atua com ampla autonomia, definindo o direcionamento de projetos e envolvendo equipes multifuncionais.", "Identifica e resolve problemas complexos de forma independente, buscando otimizar processos.", "Conecta suas entregas com a estratégia de longo prazo da empresa, garantindo alinhamento e impacto."],
+                    "Especialista II / Developer Specialist II": ["Exerce autonomia estratégica, tomando decisões de alto impacto que moldam o futuro da sua área.", "É uma referência em proatividade e responsabilidade, inspirando outros a assumirem o protagonismo.", "Define prioridades que não apenas atendem, mas antecipam as necessidades estratégicas do negócio."]
+                }
+            },
             {
                 essencia: "Somos Apaixonados pela execução",
                 competencia: "Resolução de Problemas",
@@ -174,37 +193,133 @@
                 agilidade: {
                     nome: "Resultados",
                     conceito: "Tem senso de dono e assume a responsabilidade pelos resultados, mesmo em cenários adversos.",
-                    perguntas: [
-                        "Qual foi o resultado mais impactante que você gerou nos últimos tempos?",
-                        "Fale sobre uma situação em que você teve que assumir a responsabilidade por um resultado negativo. Como você lidou com isso?"
-                    ]
+                    perguntas: ["Qual foi o resultado mais impactante que você gerou nos últimos tempos?", "Fale sobre uma situação em que você teve que assumir a responsabilidade por um resultado negativo. Como você lidou com isso?"]
                 },
                 esperado: {
-                    "Analista I / Dev I": [
-                        "Demonstra habilidade para identificar problemas simples e seguir procedimentos para resolvê-los.",
-                        "Busca ajuda quando encontra dificuldades e aprende com a orientação recebida.",
-                        "Aplica soluções conhecidas para problemas rotineiros."
-                    ],
-                    "Analista II / Dev II": [
-                        "Analisa problemas de complexidade moderada, identificando diferentes facetas.",
-                        "Propõe e experimenta soluções, avaliando os resultados.",
-                        "Colabora com outros para resolver problemas que afetam a equipe."
-                    ],
-                    "Analista III / Dev III": [
-                        "Aborda problemas complexos de forma estruturada, identificando a causa raiz.",
-                        "Desenvolve e implementa soluções criativas e eficazes, aprendendo rapidamente com os resultados.",
-                        "Demonstra agilidade para ajustar a rota quando uma solução não funciona."
-                    ],
-                    "Especialista I / Developer Specialist I": [
-                        "Antecipa problemas potenciais e atua de forma proativa para mitigá-los.",
-                        "Lidera a resolução de problemas complexos que impactam múltiplos projetos ou áreas.",
-                        "Utiliza dados e análises para fundamentar suas soluções e escalar o aprendizado."
-                    ],
-                     "Especialista II / Developer Specialist II": [
-                        "Resolve problemas sistêmicos e altamente complexos, com impacto estratégico para a organização.",
-                        "Inova na forma de resolver problemas, criando novas metodologias e frameworks.",
-                        "Dissemina o conhecimento sobre resolução de problemas, mentorando outros profissionais."
-                    ]
+                    "Analista I / Dev I": ["Demonstra habilidade para identificar problemas simples e seguir procedimentos para resolvê-los.", "Busca ajuda quando encontra dificuldades e aprende com a orientação recebida.", "Aplica soluções conhecidas para problemas rotineiros."],
+                    "Analista II / Dev II": ["Analisa problemas de complexidade moderada, identificando diferentes facetas.", "Propõe e experimenta soluções, avaliando os resultados.", "Colabora com outros para resolver problemas que afetam a equipe."],
+                    "Analista III / Dev III": ["Aborda problemas complexos de forma estruturada, identificando a causa raiz.", "Desenvolve e implementa soluções criativas e eficazes, aprendendo rapidamente com os resultados.", "Demonstra agilidade para ajustar a rota quando uma solução não funciona."],
+                    "Especialista I / Developer Specialist I": ["Antecipa problemas potenciais e atua de forma proativa para mitigá-los.", "Lidera a resolução de problemas complexos que impactam múltiplos projetos ou áreas.", "Utiliza dados e análises para fundamentar suas soluções e escalar o aprendizado."],
+                    "Especialista II / Developer Specialist II": ["Resolve problemas sistêmicos e altamente complexos, com impacto estratégico para a organização.", "Inova na forma de resolver problemas, criando novas metodologias e frameworks.", "Dissemina o conhecimento sobre resolução de problemas, mentorando outros profissionais."]
+                }
+            },
+            {
+                essencia: "Somos Apaixonados pela execução",
+                competencia: "Foco na Execução",
+                conceito: "É questionador por natureza, e se compromete a executar o que for decidido, mesmo quando discorda; Se desafia a fazer mais e melhor, seja criando algo novo ou aperfeiçoando o que já existe.",
+                perguntas: [
+                    "Fale sobre uma situação em que você discordou de uma decisão, mas precisou se comprometer com a execução. Como você garantiu o sucesso do plano?",
+                    "Descreva um momento em que você se desafiou a ir além do esperado em uma entrega. O que te motivou e qual foi o resultado?",
+                    "Como você garante a qualidade e a precisão em suas entregas, mesmo sob pressão?"
+                ],
+                agilidade: {
+                    nome: "Mental",
+                    conceito: "Lida bem com complexidade em contextos desconhecidos.",
+                    perguntas: ["Qual foi a decisão mais complexa que você tomou recentemente?", "Qual o maior risco que assumiu nos últimos meses?", "Fale sobre um problema bem difícil de resolver e como você fez para chegar a solução?"]
+                },
+                esperado: {
+                    "Analista I / Dev I": ["Executa tarefas com diligência e atenção aos detalhes, seguindo as diretrizes estabelecidas.", "Compromete-se com as decisões da equipe e contribui para o plano de ação.", "Busca entender o 'porquê' das tarefas para executá-las melhor."],
+                    "Analista II / Dev II": ["Questiona de forma construtiva para garantir a melhor abordagem antes da execução.", "Mantém o foco e a disciplina para entregar com qualidade, mesmo em tarefas complexas.", "Propõe pequenas melhorias nos processos existentes para aumentar a eficiência."],
+                    "Analista III / Dev III": ["Desafia o status quo com argumentos bem fundamentados, mas se compromete totalmente com a direção final.", "Busca ativamente por maneiras de inovar e otimizar as entregas.", "Equilibra velocidade e qualidade, garantindo uma execução precisa e ágil."],
+                    "Especialista I / Developer Specialist I": ["Lidera pelo exemplo, demonstrando alto comprometimento com a execução e a qualidade.", "Cria um ambiente onde o questionamento construtivo é incentivado para refinar a estratégia.", "É referência em disciplina e foco, inspirando a equipe a alcançar a excelência."],
+                    "Especialista II / Developer Specialist II": ["Define os padrões de excelência na execução para toda a área.", "Transforma o comprometimento da equipe em resultados de alto impacto para o negócio.", "Fomenta uma cultura de melhoria contínua e inovação na execução."]
+                }
+            },
+            // Essência: Fazemos os olhos dos nossos clientes brilharem
+            {
+                essencia: "Fazemos os olhos dos nossos clientes brilharem",
+                competencia: "Foco no Cliente",
+                conceito: "Tem entendimento do ecossistema do Grupo Boticário e do impacto individual de suas atividades na experiência dos clientes.",
+                perguntas: [
+                    "Conte uma situação em que você precisou entender profundamente as necessidades de um cliente para encontrar uma solução criativa a fim de superar suas expectativas. Como foi este processo?",
+                    "Descreva um momento em que você antecipou uma necessidade do cliente antes mesmo que ele a expressasse. O que te levou a essa antecipação e qual foi o resultado?",
+                    "Como você mede o sucesso de uma iniciativa do ponto de vista do cliente?"
+                ],
+                agilidade: null,
+                esperado: {
+                    "Analista I / Dev I": ["Demonstra interesse em entender as necessidades básicas do cliente.", "Trata os clientes com cortesia e busca resolver suas solicitações.", "Entende como suas tarefas impactam diretamente o cliente."],
+                    "Analista II / Dev II": ["Busca ativamente ouvir o cliente para entender suas dores e expectativas.", "Utiliza o feedback do cliente para propor melhorias em seu trabalho.", "Colabora com a equipe para entregar uma boa experiência ao cliente."],
+                    "Analista III / Dev III": ["Antecipa as necessidades dos clientes e propõe soluções que os encantam.", "Utiliza dados e informações sobre o cliente para tomar decisões.", "Engaja outras áreas para construir soluções integradas para o cliente."],
+                    "Especialista I / Developer Specialist I": ["É a voz do cliente dentro da empresa, influenciando decisões estratégicas.", "Cria mecanismos para coletar e analisar a percepção do cliente de forma contínua.", "Desenvolve soluções inovadoras que estabelecem um novo padrão de experiência para o cliente."],
+                    "Especialista II / Developer Specialist II": ["Define a estratégia de experiência do cliente para a sua área de atuação.", "Inspira toda a organização a colocar o cliente no centro de tudo.", "Transforma insights profundos sobre o cliente em vantagens competitivas para o negócio."]
+                }
+            },
+            {
+                essencia: "Fazemos os olhos dos nossos clientes brilharem",
+                competencia: "Influência Multifuncional",
+                conceito: "Constrói relações de confiança e estimula a colaboração entre diferentes áreas, pessoas e empresas do ecossistema.",
+                perguntas: [
+                    "Descreva uma situação em que você precisou convencer stakeholders de diferentes áreas sobre uma ideia ou projeto. Como você construiu sua argumentação e quais foram os resultados?",
+                    "Fale sobre um momento em que houve um conflito de interesses entre sua área e outra. Como você atuou para encontrar uma solução que beneficiasse a todos?",
+                    "Como você constrói e mantém relacionamentos com colegas de outras equipes para facilitar a colaboração no dia a dia?"
+                ],
+                agilidade: {
+                    nome: "Alianças",
+                    conceito: "Constrói alianças de forma matricial e gerencia conflitos.",
+                    perguntas: ["Descreva uma situação politicamente delicada em que você se envolveu.", "Fale de um conflito que você gerenciou envolvendo pares/superiores.", "Qual foi a negociação mais difícil que conduziu e como a conduziu?"]
+                },
+                esperado: {
+                    "Analista I / Dev I": ["Colabora de forma eficaz com os membros da sua equipe imediata.", "Constrói um bom relacionamento com seus pares diretos.", "Compartilha informações relevantes para o trabalho em equipe."],
+                    "Analista II / Dev II": ["Interage com colegas de outras áreas para realizar suas tarefas.", "Busca entender as necessidades e prioridades de outras equipes.", "Participa de projetos que envolvem colaboração multifuncional."],
+                    "Analista III / Dev III": ["Constrói e nutre uma rede de contatos em diferentes áreas da empresa.", "Influencia decisões que dependem da colaboração entre equipes.", "Atua como um ponto de conexão, facilitando a comunicação entre áreas."],
+                    "Especialista I / Developer Specialist I": ["Lidera iniciativas que exigem alta colaboração e alinhamento multifuncional.", "Mapeia e engaja stakeholders-chave para garantir o sucesso de projetos estratégicos.", "Media conflitos e negocia soluções que beneficiam todo o ecossistema."],
+                    "Especialista II / Developer Specialist II": ["Cria e fortalece alianças estratégicas que geram valor para o negócio.", "É uma referência em influência e colaboração, sendo procurado para resolver impasses complexos.", "Promove uma cultura de colaboração que transcende as barreiras organizacionais."]
+                }
+            },
+             // Essência: Nutrimos nossas relações
+            {
+                essencia: "Nutrimos nossas relações",
+                competencia: "Desenvolvimento e Gestão de Pessoas",
+                conceito: "Desenvolve e potencializa o desempenho de pessoas e equipes, promovendo um ambiente de trabalho saudável e produtivo.",
+                perguntas: [
+                    "Descreva como você apoia o desenvolvimento de um colega de equipe. Dê um exemplo prático.",
+                    "Fale sobre uma situação em que você deu um feedback construtivo que ajudou alguém a melhorar seu desempenho.",
+                    "Como você contribui para criar um clima de confiança e colaboração na sua equipe?"
+                ],
+                agilidade: null,
+                esperado: {
+                    "Analista I / Dev I": ["Está aberto a ajudar e compartilhar conhecimento com colegas.", "Contribui para um ambiente de trabalho positivo e respeitoso.", "Recebe bem a orientação de profissionais mais experientes."],
+                    "Analista II / Dev II": ["Oferece ajuda proativamente aos colegas e participa da integração de novos membros.", "Compartilha aprendizados e boas práticas com a equipe.", "Dá e recebe feedbacks de forma construtiva entre pares."],
+                    "Analista III / Dev III": ["Identifica oportunidades de desenvolvimento para si e para os colegas.", "Atua como mentor informal para profissionais menos experientes.", "Promove ativamente a colaboração e o compartilhamento de conhecimento na equipe."],
+                    "Especialista I / Developer Specialist I": ["Estrutura processos de desenvolvimento e mentoria para a equipe.", "Cria um ambiente psicologicamente seguro, onde as pessoas se sentem à vontade para errar e aprender.", "Facilita discussões sobre carreira e desenvolvimento com os membros da equipe."],
+                    "Especialista II / Developer Specialist II": ["Desenvolve estratégias e programas de gestão de talentos para sua área.", "É um formador de líderes, identificando e preparando futuros sucessores.", "Cria uma cultura de alto desempenho baseada no desenvolvimento contínuo e na colaboração."]
+                }
+            },
+            {
+                essencia: "Nutrimos nossas relações",
+                competencia: "Cuidado e Respeito",
+                conceito: "Demonstra cuidado e respeito em todas as interações, valorizando as pessoas e promovendo relações de confiança.",
+                perguntas: [
+                    "Descreva uma situação em que você precisou lidar com um colega que tinha uma opinião muito diferente da sua. Como você conduziu a conversa?",
+                    "Fale sobre como você age para garantir que todos em uma reunião se sintam ouvidos e respeitados.",
+                    "Como o cuidado com as relações interpessoais impacta a sua forma de trabalhar?"
+                ],
+                agilidade: null,
+                esperado: {
+                    "Analista I / Dev I": ["Trata todos os colegas com educação e cordialidade.", "Ouve os outros com atenção e sem interromper.", "É pontual e cumpre com seus compromissos com a equipe."],
+                    "Analista II / Dev II": ["Demonstra empatia, tentando entender o ponto de vista dos outros.", "É transparente em sua comunicação e constrói relações de confiança.", "Oferece e pede ajuda, demonstrando espírito de equipe."],
+                    "Analista III / Dev III": ["Valoriza ativamente a diversidade de opiniões e perspectivas.", "Age com integridade e ética em todas as situações.", "É um ponto de apoio para os colegas, oferecendo suporte em momentos difíceis."],
+                    "Especialista I / Developer Specialist I": ["Promove ativamente um ambiente de respeito mútuo e segurança psicológica.", "É um exemplo de conduta ética e transparente, inspirando confiança.", "Media situações de conflito com empatia e foco na solução."],
+                    "Especialista II / Developer Specialist II": ["Cria as bases para uma cultura organizacional pautada no cuidado e no respeito.", "É um guardião dos valores da empresa, garantindo que sejam vividos no dia a dia.", "Toma decisões difíceis considerando o impacto humano e o bem-estar das pessoas."]
+                }
+            },
+            // Essência: Somos Inquietos
+            {
+                essencia: "Somos Inquietos",
+                competencia: "Empreendedorismo",
+                conceito: "É questionador por natureza, e se compromete a executar o que for decidido, mesmo quando discorda. Se desafia a fazer mais e melhor, seja criando algo novo ou aperfeiçoando o que já existe.",
+                perguntas: [
+                    "Fale sobre uma vez que você propôs uma melhoria ou uma nova ideia que desafiava o status quo. Como foi o processo de apresentar e implementar essa mudança?",
+                    "Descreva um projeto que você liderou do início ao fim. Quais foram os maiores desafios e como você os superou?",
+                    "Quando você identifica uma oportunidade de fazer algo de forma mais eficiente ou inovadora, o que você costuma fazer?"
+                ],
+                agilidade: null,
+                esperado: {
+                    "Analista I / Dev I": ["Mostra iniciativa para aprender e assumir novas tarefas.", "Sugere pequenas melhorias em suas atividades rotineiras.", "É curioso e faz perguntas para entender melhor os processos."],
+                    "Analista II / Dev II": ["Identifica oportunidades de otimização em seu trabalho e propõe soluções.", "Assume a responsabilidade por pequenas iniciativas do início ao fim.", "Não se contenta com o 'sempre foi assim' e busca formas melhores de fazer."],
+                    "Analista III / Dev III": ["Propõe e lidera projetos de melhoria que geram impacto para a equipe.", "Calcula riscos e toma a iniciativa para testar novas ideias.", "Enxerga problemas como oportunidades para inovar."],
+                    "Especialista I / Developer Specialist I": ["Cria e implementa soluções inovadoras que desafiam o padrão do mercado.", "Mobiliza recursos e pessoas para transformar ideias em realidade.", "Tem uma atitude de 'dono do negócio', buscando sempre o melhor para a empresa."],
+                    "Especialista II / Developer Specialist II": ["Lidera a criação de novos negócios, produtos ou serviços.", "Inspira uma cultura de empreendedorismo e inovação em toda a organização.", "Assume riscos calculados que podem levar a empresa a um novo patamar de sucesso."]
                 }
             },
             {
@@ -219,37 +334,91 @@
                 agilidade: {
                     nome: "Autoconhecimento",
                     conceito: "Evolui conhecendo suas qualidades e reconhecendo suas oportunidades.",
-                    perguntas: [
-                        "Fale sobre uma oportunidade de desenvolvimento em que você evoluiu.",
-                        "Como fez para melhorar em algum aspecto comportamental relevante para seu desempenho?"
-                    ]
+                    perguntas: ["Fale sobre uma oportunidade de desenvolvimento em que você evoluiu.", "Como fez para melhorar em algum aspecto comportamental relevante para seu desempenho?"]
                 },
                 esperado: {
-                     "Analista I / Dev I": [
-                        "Mostra curiosidade e disposição para aprender tarefas novas.",
-                        "Ouve atentamente os feedbacks e tenta aplicá-los.",
-                        "Busca ajuda para se desenvolver em pontos específicos."
-                    ],
-                    "Analista II / Dev II": [
-                        "Busca ativamente por conhecimento para melhorar seu desempenho na função.",
-                        "Solicita feedbacks de forma proativa para identificar pontos de melhoria.",
-                        "Aplica os aprendizados e feedbacks em suas atividades diárias."
-                    ],
-                    "Analista III / Dev III": [
-                        "Tem um plano de desenvolvimento pessoal e busca recursos para executá-lo.",
-                        "Demonstra humildade para reconhecer suas vulnerabilidades e trabalhar nelas.",
-                        "Utiliza os feedbacks para fazer mudanças comportamentais observáveis."
-                    ],
-                    "Especialista I / Developer Specialist I": [
-                        "É referência em aprendizado contínuo, explorando novas áreas de conhecimento.",
-                        "Busca feedbacks de diversas fontes e os utiliza para se reinventar profissionalmente.",
-                        "Mentora outros profissionais em seu desenvolvimento."
-                    ],
-                     "Especialista II / Developer Specialist II": [
-                        "Cria e dissemina uma cultura de autodesenvolvimento e feedback na equipe e organização.",
-                        "Está constantemente se desafiando e saindo da sua zona de conforto.",
-                        "Inspira os outros com sua jornada de aprendizado e evolução."
-                    ]
+                    "Analista I / Dev I": ["Mostra curiosidade e disposição para aprender tarefas novas.", "Ouve atentamente os feedbacks e tenta aplicá-los.", "Busca ajuda para se desenvolver em pontos específicos."],
+                    "Analista II / Dev II": ["Busca ativamente por conhecimento para melhorar seu desempenho na função.", "Solicita feedbacks de forma proativa para identificar pontos de melhoria.", "Aplica os aprendizados e feedbacks em suas atividades diárias."],
+                    "Analista III / Dev III": ["Tem um plano de desenvolvimento pessoal e busca recursos para executá-lo.", "Demonstra humildade para reconhecer suas vulnerabilidades e trabalhar nelas.", "Utiliza os feedbacks para fazer mudanças comportamentais observáveis."],
+                    "Especialista I / Developer Specialist I": ["É referência em aprendizado contínuo, explorando novas áreas de conhecimento.", "Busca feedbacks de diversas fontes e os utiliza para se reinventar profissionalmente.", "Mentora outros profissionais em seu desenvolvimento."],
+                    "Especialista II / Developer Specialist II": ["Cria e dissemina uma cultura de autodesenvolvimento e feedback na equipe e organização.", "Está constantemente se desafiando e saindo da sua zona de conforto.", "Inspira os outros com sua jornada de aprendizado e evolução."]
+                }
+            },
+            {
+                essencia: "Somos Inquietos",
+                competencia: "Adaptabilidade",
+                conceito: "É resiliente e gerencia as suas emoções ao se adaptar às evoluções que fazem parte da complexidade do nosso ecossistema.",
+                perguntas: [
+                    "Conte sobre uma mudança significativa que ocorreu no seu trabalho (processo, tecnologia, equipe) e como você se adaptou a ela.",
+                    "Descreva uma situação de alta pressão ou com prazos apertados. Como você gerenciou suas emoções e manteve o foco?",
+                    "Fale sobre um momento em que você precisou aprender algo novo rapidamente para se adaptar a uma nova demanda."
+                ],
+                agilidade: {
+                    nome: "Mudanças",
+                    conceito: "Reage bem a cenários de mudanças e se adapta a novos desafios.",
+                    perguntas: ["Como você se adaptou a última mudança que passou?", "Qual foi o seu papel nela?"]
+                },
+                esperado: {
+                    "Analista I / Dev I": ["Aceita bem as mudanças de tarefas e prioridades.", "Mantém a calma diante de imprevistos rotineiros.", "Demonstra vontade de aprender o necessário para se adaptar."],
+                    "Analista II / Dev II": ["Adapta-se rapidamente a novas ferramentas e processos de trabalho.", "Lida de forma construtiva com a pressão e a incerteza.", "Ajusta seu plano de trabalho conforme as prioridades mudam."],
+                    "Analista III / Dev III": ["Abraça as mudanças como oportunidades de crescimento e aprendizado.", "Mantém a produtividade e o bom humor mesmo em cenários de grande complexidade.", "Ajuda a equipe a navegar por períodos de transição."],
+                    "Especialista I / Developer Specialist I": ["Lidera a equipe durante processos de mudança, oferecendo suporte e direção.", "É resiliente e inspira confiança em momentos de adversidade.", "Antecipa a necessidade de adaptação e prepara a equipe para futuras mudanças."],
+                    "Especialista II / Developer Specialist II": ["Conduz grandes transformações organizacionais com serenidade e visão estratégica.", "É um pilar de estabilidade e resiliência para toda a empresa.", "Transforma a capacidade de adaptação em uma vantagem competitiva."]
+                }
+            },
+            // Essência: Buscamos Sucesso Responsável
+            {
+                essencia: "Buscamos Sucesso Responsável",
+                competencia: "Visão de negócio",
+                conceito: "Foca suas ações de hoje considerando o impacto de longo prazo na empresa, nos colaboradores, nos parceiros, nos clientes e na sociedade.",
+                perguntas: [
+                    "Conte sobre uma decisão que você tomou que considerou não apenas o resultado imediato, mas também o impacto a longo prazo. Quais fatores você ponderou?",
+                    "Como você se mantém atualizado sobre as tendências do mercado e como aplica esse conhecimento para identificar oportunidades ou riscos para o negócio?",
+                    "Descreva uma situação em que você precisou equilibrar uma meta de curto prazo com a estratégia de longo prazo da empresa."
+                ],
+                agilidade: null,
+                esperado: {
+                    "Analista I / Dev I": ["Entende como suas tarefas se conectam com os objetivos da sua equipe.", "Mostra curiosidade sobre o negócio e como a empresa funciona.", "Realiza seu trabalho com consciência dos custos e recursos envolvidos."],
+                    "Analista II / Dev II": ["Compreende os principais indicadores de sucesso da sua área.", "Toma decisões no dia a dia que estão alinhadas com as metas do time.", "Busca entender o mercado em que a empresa atua."],
+                    "Analista III / Dev III": ["Analisa como suas ações impactam diferentes áreas da empresa e os clientes.", "Utiliza seu conhecimento do negócio para propor melhorias e identificar oportunidades.", "Conecta as metas da sua equipe com a estratégia geral da empresa."],
+                    "Especialista I / Developer Specialist I": ["Tem uma compreensão profunda do modelo de negócio, do mercado e da concorrência.", "Contribui para a definição de metas e estratégias da sua área.", "Avalia o impacto de longo prazo de suas decisões no ecossistema."],
+                    "Especialista II / Developer Specialist II": ["Participa da formulação da estratégia de negócio da empresa.", "Antecipa tendências de mercado e direciona a empresa para se adaptar a elas.", "Toma decisões que garantem a perenidade e o sucesso sustentável do negócio."]
+                }
+            },
+            {
+                essencia: "Buscamos Sucesso Responsável",
+                competencia: "Responsabilidade Financeira e Sustentabilidade",
+                conceito: "É responsável e eficiente na utilização dos nossos recursos econômicos e ambientais, evitando desperdícios.",
+                perguntas: [
+                    "Descreva uma situação em que você identificou uma oportunidade de reduzir custos ou otimizar o uso de recursos no seu trabalho. O que você fez?",
+                    "Como você considera os aspectos de sustentabilidade (ambiental, social) nas suas atividades e decisões diárias?",
+                    "Fale sobre um projeto em que você precisou gerenciar um orçamento. Como você garantiu que os recursos fossem bem aplicados?"
+                ],
+                agilidade: null,
+                esperado: {
+                    "Analista I / Dev I": ["Utiliza os recursos da empresa de forma consciente, evitando desperdícios óbvios.", "Segue as políticas de sustentabilidade e responsabilidade financeira da empresa.", "Reporta problemas ou oportunidades de melhoria que identifica."],
+                    "Analista II / Dev II": ["Busca ativamente por maneiras de otimizar o uso de recursos em suas tarefas.", "Considera o impacto financeiro de suas decisões no dia a dia.", "Propõe pequenas ações para tornar os processos mais sustentáveis."],
+                    "Analista III / Dev III": ["Analisa dados para identificar oportunidades de eficiência e redução de custos.", "Incorpora a sustentabilidade como um critério em seus projetos e propostas.", "Gerencia orçamentos de projetos com responsabilidade e transparência."],
+                    "Especialista I / Developer Specialist I": ["Desenvolve e implementa projetos de otimização de recursos com impacto significativo.", "Influencia a equipe a adotar práticas mais responsáveis e sustentáveis.", "É referência em gestão financeira e sustentabilidade na sua área."],
+                    "Especialista II / Developer Specialist II": ["Define estratégias de responsabilidade financeira e sustentabilidade para a organização.", "Lidera a implementação de grandes iniciativas que geram valor econômico e socioambiental.", "Garante que a cultura de responsabilidade e eficiência permeie toda a empresa."]
+                }
+            },
+            {
+                essencia: "Buscamos Sucesso Responsável",
+                competencia: "Diversidade e Inclusão",
+                conceito: "Conhece e promove os direcionais e políticas de diversidade e inclusão da empresa e age no dia a dia para que todas as pessoas se sintam parte.",
+                perguntas: [
+                    "Já participou de iniciativas ou projetos voltados à diversidade e inclusão? O que fez para promover um ambiente mais inclusivo e diverso?",
+                    "Em sua experiência, como você age no dia a dia para que as pessoas se sintam valorizadas e pertencentes, independentemente de suas diferenças?",
+                    "Fale sobre um momento em que você percebeu a necessidade de mudar sua abordagem em função de diferentes perspectivas culturais ou de um ambiente diverso. Como você agiu e o que aprendeu?"
+                ],
+                agilidade: null,
+                esperado: {
+                    "Analista I / Dev I": ["Trata todos com respeito, independentemente de suas diferenças.", "Demonstra curiosidade e abertura para aprender sobre diferentes culturas e perspectivas.", "Evita piadas ou comentários que possam ser ofensivos."],
+                    "Analista II / Dev II": ["Busca ativamente incluir colegas com diferentes perfis nas conversas e atividades.", "Está ciente de seus próprios vieses e se esforça para não agir com base neles.", "Utiliza uma linguagem inclusiva em sua comunicação."],
+                    "Analista III / Dev III": ["Promove ativamente um ambiente onde a diversidade de ideias é valorizada.", "Desafia comportamentos ou comentários não inclusivos de forma respeitosa.", "Participa ou apoia iniciativas de diversidade e inclusão na empresa."],
+                    "Especialista I / Developer Specialist I": ["Atua como um aliado e defensor da diversidade e inclusão na sua equipe e área.", "Cria processos e práticas que garantem a equidade de oportunidades.", "Mentora pessoas de grupos sub-representados, apoiando seu desenvolvimento."],
+                    "Especialista II / Developer Specialist II": ["Lidera a estratégia de diversidade e inclusão em sua área de atuação.", "É um porta-voz da importância da D&I para o sucesso do negócio.", "Cria uma cultura onde todos se sentem seguros, respeitados e pertencentes."]
                 }
             }
         ];
